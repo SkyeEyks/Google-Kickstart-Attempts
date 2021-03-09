@@ -15,7 +15,7 @@ def main():
         prices = sorted(map(int, INPUT.get().split(' ')))
         total = [0, 0]
 
-        while total[0] <= B:
+        while total[0] <= B and len(prices):
             total[0] += prices.pop(0)
             total[1] += 1
 
