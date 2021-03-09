@@ -1,5 +1,4 @@
 from GoogleInput import GoogleInput
-from memory_profiler import profile
 
 
 INPUT = GoogleInput(
