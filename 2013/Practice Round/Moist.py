@@ -3,18 +3,8 @@
 from GoogleInput import GoogleInput
 
 INPUT = GoogleInput(
-    "2",
-    "2",
-    "Oksana Baiul",
-    "Michelle Kwan",
-    "3",
-    "Elvis Stojko",
-    "Evgeni Plushenko",
-    "Kristi Yamaguchi",
-    ans=[
-        "Case #1: 1",
-        "Case #2: 0"
-    ]
+    'Moist - input.txt',
+    'Moist - output.txt'
 )
 
 
@@ -32,8 +22,8 @@ def main():
             else:
                 cost += 1
         print('Case #{}: {}'.format(case, cost))
-    INPUT.checkOutput()
 
 
 if __name__ == "__main__":
     main()
+    INPUT.checkOutput()

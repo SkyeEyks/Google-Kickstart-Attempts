@@ -4,12 +4,16 @@ import typing
 
 
 class GoogleInput:
-    def __init__(self, *inputs: str, ans: typing.List[str] = ['']):
+    def __init__(self, input_dir: str, outputs_dir: str = None):
         Print.googleInput = self
         self.i = -1
-        self.inputs = inputs
-        self.ans = '\n'.join(ans)
+        with open(input_dir, 'r') as f:
+            self.inputs = f.read().split('\n')
         self.output = ''
+        self.ans = None
+        if outputs_dir:
+            with open(outputs_dir, 'r') as f:
+                self.ans = f.read()
 
     def get(self) -> str:
         self.i += 1

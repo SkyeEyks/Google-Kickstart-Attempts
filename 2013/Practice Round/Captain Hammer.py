@@ -3,10 +3,8 @@
 from GoogleInput import GoogleInput
 
 INPUT = GoogleInput(
-    "3",
-    "98 980",
-    "98 490",
-    "299 1234"
+    "Captain Hammer - input.txt",
+    "Captain Hammer - output.txt"
 )
 
 

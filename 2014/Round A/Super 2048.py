@@ -3,49 +3,8 @@
 from GoogleInput import GoogleInput
 
 INPUT = GoogleInput(
-    "3",
-    "4 right",
-    "2 0 2 4",
-    "2 0 4 2",
-    "2 2 4 8",
-    "2 2 4 4",
-    "10 up",
-    "2 0 0 0 0 0 0 0 0 0",
-    "2 0 0 0 0 0 0 0 0 0",
-    "2 0 0 0 0 0 0 0 0 0",
-    "2 0 0 0 0 0 0 0 0 0",
-    "2 0 0 0 0 0 0 0 0 0",
-    "2 0 0 0 0 0 0 0 0 0",
-    "2 0 0 0 0 0 0 0 0 0",
-    "2 0 0 0 0 0 0 0 0 0",
-    "2 0 0 0 0 0 0 0 0 0",
-    "2 0 0 0 0 0 0 0 0 0",
-    "3 right",
-    "2 2 2",
-    "4 4 4",
-    "8 8 8",
-    ans=[
-        "Case #1:",
-        "0 0 4 4",
-        "0 2 4 2",
-        "0 4 4 8",
-        "0 0 4 8",
-        "Case #2:",
-        "4 0 0 0 0 0 0 0 0 0",
-        "4 0 0 0 0 0 0 0 0 0",
-        "4 0 0 0 0 0 0 0 0 0",
-        "4 0 0 0 0 0 0 0 0 0",
-        "4 0 0 0 0 0 0 0 0 0",
-        "0 0 0 0 0 0 0 0 0 0",
-        "0 0 0 0 0 0 0 0 0 0",
-        "0 0 0 0 0 0 0 0 0 0",
-        "0 0 0 0 0 0 0 0 0 0",
-        "0 0 0 0 0 0 0 0 0 0",
-        "Case #3:",
-        "0 2 4",
-        "0 4 8",
-        "0 8 16"
-         ]
+    'Super 2048 - input.txt',
+    'Super 2048 - output.txt'
 )
 
 
@@ -171,8 +130,8 @@ def main():
 
         finalBoard = map(lambda _: [_[__][0] for __ in range(len(_))], board)
         print("Case #{}:\n{}".format(case, '\n'.join([' '.join(map(str, line)) for line in finalBoard])))
-    INPUT.checkOutput()
 
 
 if __name__ == "__main__":
     main()
+    INPUT.checkOutput()
