@@ -10,12 +10,15 @@ INPUT = GoogleInput(
     "3",
     "Elvis Stojko",
     "Evgeni Plushenko",
-    "Kristi Yamaguchi"
+    "Kristi Yamaguchi",
+    ans=[
+        "Case #1: 1",
+        "Case #2: 0"
+    ]
 )
 
 
 def main():
-    print('\nMoist')
     T = int(INPUT.get())
 
     for case in range(1, T + 1):
@@ -29,6 +32,7 @@ def main():
             else:
                 cost += 1
         print('Case #{}: {}'.format(case, cost))
+    INPUT.checkOutput()
 
 
 if __name__ == "__main__":

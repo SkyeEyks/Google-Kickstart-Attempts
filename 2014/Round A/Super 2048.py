@@ -23,7 +23,29 @@ INPUT = GoogleInput(
     "3 right",
     "2 2 2",
     "4 4 4",
-    "8 8 8"
+    "8 8 8",
+    ans=[
+        "Case #1:",
+        "0 0 4 4",
+        "0 2 4 2",
+        "0 4 4 8",
+        "0 0 4 8",
+        "Case #2:",
+        "4 0 0 0 0 0 0 0 0 0",
+        "4 0 0 0 0 0 0 0 0 0",
+        "4 0 0 0 0 0 0 0 0 0",
+        "4 0 0 0 0 0 0 0 0 0",
+        "4 0 0 0 0 0 0 0 0 0",
+        "0 0 0 0 0 0 0 0 0 0",
+        "0 0 0 0 0 0 0 0 0 0",
+        "0 0 0 0 0 0 0 0 0 0",
+        "0 0 0 0 0 0 0 0 0 0",
+        "0 0 0 0 0 0 0 0 0 0",
+        "Case #3:",
+        "0 2 4",
+        "0 4 8",
+        "0 8 16"
+         ]
 )
 
 
@@ -43,11 +65,11 @@ def main():
 
     """
 
-
     T = int(INPUT.get())  # number of test cases
 
-    for case in range(1, T+1):
-        N, DIR = map(lambda _: int(_) if _.isdigit() else _, INPUT.get().split(' '))  # N = length and height of matrix; DIR = direction to move numbers
+    for case in range(1, T + 1):
+        N, DIR = map(lambda _: int(_) if _.isdigit() else _,
+                     INPUT.get().split(' '))  # N = length and height of matrix; DIR = direction to move numbers
         board = []
 
         for i in range(N):
@@ -59,7 +81,8 @@ def main():
                     num = board[y][x][0]  # The value at (x, y) in the matrix
                     stop = x  # Where the value at (x, y) should be moved to
                     if num:
-                        for xneg in range(x)[::-1]:  # xneg is the x position between x and the edge of the board in the direction of DIR
+                        for xneg in range(x)[
+                                    ::-1]:  # xneg is the x position between x and the edge of the board in the direction of DIR
                             if board[y][xneg][1]:  # if the number found has been merged, move the value to one position before (xneg, y)
                                 stop = xneg + 1
                                 break
@@ -77,7 +100,8 @@ def main():
                         board[y][x][0] = 0
 
         elif DIR == 'up':
-            for y in range(1, N):  # up starts going through values from the top, so I'm going through each x pos for each y pos
+            for y in range(1,
+                           N):  # up starts going through values from the top, so I'm going through each x pos for each y pos
                 for x in range(N):
                     num = board[y][x][0]
                     stop = y
@@ -100,12 +124,12 @@ def main():
                         board[y][x][0] = 0
 
         elif DIR == 'right':
-            for x in range(N-1)[::-1]:
+            for x in range(N - 1)[::-1]:
                 for y in range(N):
                     num = board[y][x][0]
                     stop = x
                     if num:
-                        for xneg in range(x+1, N):
+                        for xneg in range(x + 1, N):
                             if board[y][xneg][1]:
                                 stop = xneg - 1
                                 break
@@ -123,12 +147,12 @@ def main():
                         board[y][x][0] = 0
 
         elif DIR == 'down':
-            for y in range(N-1)[::-1]:
+            for y in range(N - 1)[::-1]:
                 for x in range(N):
                     num = board[y][x][0]
                     stop = y
                     if num:
-                        for yneg in range(y+1, N):
+                        for yneg in range(y + 1, N):
                             if board[yneg][x][1]:
                                 stop = yneg - 1
                                 break
@@ -147,6 +171,7 @@ def main():
 
         finalBoard = map(lambda _: [_[__][0] for __ in range(len(_))], board)
         print("Case #{}:\n{}".format(case, '\n'.join([' '.join(map(str, line)) for line in finalBoard])))
+    INPUT.checkOutput()
 
 
 if __name__ == "__main__":
