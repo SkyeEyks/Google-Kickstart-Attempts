@@ -1,6 +1,5 @@
 import sys
 import _io
-import typing
 
 
 class GoogleInput:
