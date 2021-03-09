@@ -1,4 +1,5 @@
 from GoogleInput import GoogleInput
+from memory_profiler import profile
 
 
 INPUT = GoogleInput(
@@ -19,7 +20,7 @@ def main():
             total[0] += prices.pop(0)
             total[1] += 1
 
-        if total[1]: total[1] -= 1
+        if total[0] > B: total[1] -= 1
 
         print("Case #{}: {}".format(case, total[1]))
 
