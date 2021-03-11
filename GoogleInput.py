@@ -1,10 +1,15 @@
 import sys
-import _io
+import typing
 
 
 class GoogleInput:
-    def __init__(self, input_dir: str, outputs_dir: str = None):
-        Print.googleInput = self
+    def __init__(self, input_dir: str, outputs_dir: str, function: typing.Callable):
+        self._in = sys.stdin.readline
+        self._out = sys.stdout.write
+
+        sys.stdout.write = self._write
+        sys.stdin.readline = self._read
+
         self.i = -1
         with open(input_dir, 'r') as f:
             self.inputs = f.read().split('\n')
@@ -14,32 +19,27 @@ class GoogleInput:
             with open(outputs_dir, 'r') as f:
                 self.ans = f.read()
 
-    def get(self) -> str:
-        self.i += 1
-        return self.inputs[self.i]
+        function()
+
+        self.checkOutput()
+
+        sys.stdin.readline = self._in
+        sys.stdout.write = self._out
 
     def reset(self):
         self.i = -1
 
     def checkOutput(self):
         if self.output == self.ans+"\n":
-            Print.out.write('Your output is correct! :)\n')
+            self._out('Your output is correct! :)\n')
         else:
-            Print.out.write('Your output isn\'t correct :(\n')
+            self._out('Your output isn\'t correct :(\n')
 
+    def _write(self, *args, sep: str = ' ', flush: bool = False):
+        self._out(sep.join(str(_) for _ in args))
+        self.output += sep.join(str(_) for _ in args)
+        if flush: sys.stdout.flush()
 
-class Print(_io.TextIOWrapper):
-    out: _io.TextIOWrapper
-    googleInput: GoogleInput
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        Print.out = sys.stdout
-        sys.stdout = self
-
-    def write(self, *args, **kwargs):
-        Print.out.write(*args, **kwargs)
-        Print.googleInput.output += kwargs['sep'].join(args) if 'sep' in kwargs else ' '.join(args)
-
-
-Print(sys.stdout)
+    def _read(self):
+        self.i += 1
+        return self.inputs[self.i]

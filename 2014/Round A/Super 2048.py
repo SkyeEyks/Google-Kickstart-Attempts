@@ -2,11 +2,6 @@
 
 from GoogleInput import GoogleInput
 
-INPUT = GoogleInput(
-    'Super 2048 - input.txt',
-    'Super 2048 - output.txt'
-)
-
 
 def main():
     """
@@ -24,15 +19,14 @@ def main():
 
     """
 
-    T = int(INPUT.get())  # number of test cases
+    T = int(input())  # number of test cases
 
     for case in range(1, T + 1):
-        N, DIR = map(lambda _: int(_) if _.isdigit() else _,
-                     INPUT.get().split(' '))  # N = length and height of matrix; DIR = direction to move numbers
+        N, DIR = map(lambda _: int(_) if _.isdigit() else _, input().split(' '))  # N = length and height of matrix; DIR = direction to move numbers
         board = []
 
         for i in range(N):
-            board.append(list(map(lambda _: [int(_), 0], INPUT.get().split(" "))))
+            board.append(list(map(lambda _: [int(_), 0], input().split(" "))))
 
         if DIR == 'left':
             for x in range(1, N):  # x position of matrix
@@ -132,6 +126,8 @@ def main():
         print("Case #{}:\n{}".format(case, '\n'.join([' '.join(map(str, line)) for line in finalBoard])))
 
 
-if __name__ == "__main__":
-    main()
-    INPUT.checkOutput()
+GoogleInput(
+    'Super 2048 - input.txt',
+    'Super 2048 - output.txt',
+    main
+)

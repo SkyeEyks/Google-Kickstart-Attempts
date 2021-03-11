@@ -2,18 +2,16 @@
 
 from GoogleInput import GoogleInput
 
-INPUT = GoogleInput(
-    "Captain Hammer - input.txt",
-    "Captain Hammer - output.txt"
-)
-
 
 def main():  # INCOMPLETE
-    T = int(INPUT.get())
+    T = int(input())
 
     for case in range(1, T+1):
-        V, D = map(int, INPUT.get().split(' '))
+        V, D = map(int, input().split(' '))
 
 
-if __name__ == "__main__":
-    main()
+GoogleInput(
+    "Captain Hammer - input.txt",
+    "Captain Hammer - output.txt",
+    main
+)

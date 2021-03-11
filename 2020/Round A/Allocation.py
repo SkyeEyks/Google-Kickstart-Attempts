@@ -1,18 +1,12 @@
 from GoogleInput import GoogleInput
 
 
-INPUT = GoogleInput(
-    "Allocation - input.txt",
-    "Allocation - output.txt"
-)
-
-
 def main():
-    T = int(INPUT.get())
+    T = int(input())
 
     for case in range(1, T+1):
-        N, B = map(int, INPUT.get().split(' '))
-        prices = sorted(map(int, INPUT.get().split(' ')))
+        N, B = map(int, input().split(' '))
+        prices = sorted(map(int, input().split(' ')))
         total = [0, 0]
 
         while total[0] <= B and len(prices):
@@ -24,6 +18,8 @@ def main():
         print("Case #{}: {}".format(case, total[1]))
 
 
-if __name__ == "__main__":
-    main()
-    INPUT.checkOutput()
+INPUT = GoogleInput(
+    "Allocation - input.txt",
+    "Allocation - output.txt",
+    main
+)

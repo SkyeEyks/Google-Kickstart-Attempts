@@ -2,21 +2,16 @@
 
 from GoogleInput import GoogleInput
 
-INPUT = GoogleInput(
-    'Moist - input.txt',
-    'Moist - output.txt'
-)
-
 
 def main():
-    T = int(INPUT.get())
+    T = int(input())
 
     for case in range(1, T + 1):
-        N = int(INPUT.get())
+        N = int(input())
         cost = 0
-        lastName = INPUT.get()
+        lastName = input()
         for i in range(N - 1):
-            name = INPUT.get()
+            name = input()
             if name >= lastName:
                 lastName = name
             else:
@@ -24,6 +19,8 @@ def main():
         print('Case #{}: {}'.format(case, cost))
 
 
-if __name__ == "__main__":
-    main()
-    INPUT.checkOutput()
+GoogleInput(
+    'Moist - input.txt',
+    'Moist - output.txt',
+    main
+)
