@@ -1,5 +1,7 @@
 # https://codingcompetitions.withgoogle.com/kickstart/round/0000000000434d9c/0000000000434cd0
 
+import sys
+sys.path.append("..\\..")
 from GoogleInput import GoogleInput
 
 

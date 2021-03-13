@@ -4,11 +4,11 @@ import typing
 
 class GoogleInput:
     def __init__(self, input_dir: str, outputs_dir: str, function: typing.Callable):
-        self._in = sys.stdin.readline
+        self._in = sys.stdin
         self._out = sys.stdout.write
 
         sys.stdout.write = self._write
-        sys.stdin.readline = self._read
+        sys.stdin = self.Read(self)
 
         self.i = -1
         with open(input_dir, 'r') as f:
@@ -23,7 +23,7 @@ class GoogleInput:
 
         self.checkOutput()
 
-        sys.stdin.readline = self._in
+        sys.stdin = self._in
         sys.stdout.write = self._out
 
     def reset(self):
@@ -40,6 +40,10 @@ class GoogleInput:
         self.output += sep.join(str(_) for _ in args)
         if flush: sys.stdout.flush()
 
-    def _read(self):
-        self.i += 1
-        return self.inputs[self.i]
+    class Read:
+        def __init__(self, gi):
+            self.gi = gi
+
+        def readline(self):
+            self.gi.i += 1
+            return self.gi.inputs[self.gi.i]

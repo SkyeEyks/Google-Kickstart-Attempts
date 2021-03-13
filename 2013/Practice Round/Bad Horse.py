@@ -1,9 +1,11 @@
 # https://codingcompetitions.withgoogle.com/kickstart/round/0000000000434944/0000000000434749
 
+import sys
+sys.path.append("..\\..")
 from GoogleInput import GoogleInput
 
 
-def main():
+def main():  # INCOMPLETE
     T = int(input())
 
     for case in range(1, T+1):
