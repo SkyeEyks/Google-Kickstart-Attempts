@@ -5,7 +5,7 @@ sys.path.append("..\\..")
 from GoogleInput import GoogleInput
 
 
-def main():
+def main():  # Can be made more efficient
     def rec(idx: int, p: int):
         if p == 0:
             return 0
